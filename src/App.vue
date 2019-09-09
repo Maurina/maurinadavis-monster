@@ -37,7 +37,7 @@
             <h2 class="player-turn" :style="{background: turnBackcolor, color: turnColor}">{{ myAttackHere }}</h2>
 
             <ul>
-                <li v-for="attack in attackLog" v-bind:key"attack.id" :class="{'player-turn': attack.isPlayer, 'monster-turn': !attack.isPlayer}"> 
+                <li v-for="attack in attackLog" v-bind:key="attack.id" :class="{'player-turn': attack.isPlayer, 'monster-turn': !attack.isPlayer}"> 
                 {{ attack.text }}
             
                 </li>
@@ -171,7 +171,15 @@ export default {
 </script>
 
 <style>
-#app{
+#app{ 
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
   .text-center {
     text-align: center;
 }
@@ -276,5 +284,5 @@ button {
 #give-up:hover {
     background-color: #c7c7c7;
 }
-}
+
 </style>
