@@ -3,7 +3,10 @@
  <div id="app">
     <section class="row">
         <div class="small-6 columns">
+            <v-badge bottom>
+                <span slot="badge">{{ myCount }}</span>
             <h1 class="text-center">YOU</h1>
+            </v-badge>
             <div class="healthbarMe">
                 <div class="healthbarMe text-center" :style="{width: myHealth + '%'}" style="background-color: green; margin: 0; color: white;">
                     {{ myHealth }}
@@ -11,10 +14,11 @@
             </div>
         </div>
         <div class="small-6 columns">
-            <v-badge left>
-                     <span slot="badge"  class="monster-turn"></span>
+            <v-badge bottom>
+                <span slot="badge">{{ monsterCount }}</span>
             <h1 class="text-center">MONSTER</h1>
             </v-badge>
+
             <div class="healthbarMonster">
                 <div class="healthbarMonster text-center" :style="{width: monsterHealth + '%'}" style="background-color: green; margin: 0; color: white;">
                     {{ monsterHealth }}
@@ -35,10 +39,16 @@
             <v-btn color="info" @click="giveUp"  id="give-up">GIVE UP</v-btn>
         </div>
     </section>
-    <section class="row log" v-if="attackLog.length > 0">
-        <div class="small-12 columns">
+
+      <section class="row log">
+          <div class="small-12 columns">
             <h2 class="monster-turn" :style="{background: turnBackcolor, color: turnColor}">{{  monsterAttachHere }}</h2>
             <h2 class="player-turn" :style="{background: turnBackcolor, color: turnColor}">{{ myAttackHere }}</h2>
+          </div>
+      </section>
+    <section class="row log" v-if="attackLog.length > 0">
+        <div class="small-12 columns">
+          
 
             <ul>
                 <li v-for="attack in attackLog" v-bind:key="attack.id" :class="{'player-turn': attack.isPlayer, 'monster-turn': !attack.isPlayer}"> 
@@ -68,7 +78,9 @@ export default {
         myAttackHere : `En garde! `,
         monsterAttachHere : `ROAR`,
         turnColor: 'black',
-        turnBackcolor : 'yellow'
+        turnBackcolor : 'yellow',
+        monsterCount: 0,
+        myCount: 0
          }),
 
     methods:{
@@ -79,10 +91,9 @@ export default {
            this.attackLog.unshift({
             isPlayer: false,
             text:  `Monster Attack : ${hitMe}`})
-       
+
            this.monsterAttachHere = (`Monster Attack : ${hitMe}`)
-        
-    
+            this.monsterCount +=1
         },
  
         myAttack: function(monsterHealth){
@@ -92,7 +103,7 @@ export default {
                 isPlayer: true,
                 text: `My Attack : ${hitMonster}`})
             this.myAttackHere = ( `My Attack : ${hitMonster}`)
-         
+            this.myCount +=1
          
         },
 
@@ -103,7 +114,7 @@ export default {
                 isPlayer: true,
                 text :`My Special Attack : ${hitMonsterSpecial}`})
             this.myAttackHere = (`My Special Attack : ${hitMonsterSpecial}`)
-            
+              this.myCount +=1
         },
 
         healMe: function(myHealth){
@@ -162,6 +173,8 @@ export default {
             this.attackLog = []
             this.turnColor ='black',
             this.turnBackcolor = 'yellow'
+            this.monsterCount = 0
+            this.myCount = 0
         },
 
         giveUp: function(){
@@ -184,6 +197,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
   margin: 0 auto;
+  width: 80%;
 }
 
   .text-center {
