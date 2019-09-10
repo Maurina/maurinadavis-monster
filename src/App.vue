@@ -11,7 +11,10 @@
             </div>
         </div>
         <div class="small-6 columns">
+            <v-badge left>
+                     <span slot="badge"  class="monster-turn"></span>
             <h1 class="text-center">MONSTER</h1>
+            </v-badge>
             <div class="healthbarMonster">
                 <div class="healthbarMonster text-center" :style="{width: monsterHealth + '%'}" style="background-color: green; margin: 0; color: white;">
                     {{ monsterHealth }}
