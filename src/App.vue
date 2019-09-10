@@ -6,6 +6,12 @@
             <v-badge bottom>
                 <span slot="badge">{{ myCount }}</span>
             <h1 class="text-center">YOU</h1>
+                      <v-avatar>
+        <img
+          src="http://nwpltd.org/wp-content/uploads/2015/12/hero.jpg"
+          alt="hero"
+        >
+      </v-avatar>
             </v-badge>
             <div class="healthbarMe">
                 <div class="healthbarMe text-center" :style="{width: myHealth + '%'}" style="background-color: green; margin: 0; color: white;">
@@ -16,7 +22,14 @@
         <div class="small-6 columns">
             <v-badge bottom>
                 <span slot="badge">{{ monsterCount }}</span>
+       
             <h1 class="text-center">MONSTER</h1>
+                      <v-avatar>
+        <img
+          src="https://vignette.wikia.nocookie.net/monster-legends-competitive/images/a/af/Wolfgang.png/revision/latest?cb=20180929173215&path-prefix=fr"
+          alt="monster"
+        >
+      </v-avatar>
             </v-badge>
 
             <div class="healthbarMonster">
@@ -31,6 +44,8 @@
               <v-btn color="success" @click="newGame" id="start-game">START NEW GAME</v-btn>
         </div>
     </section>
+
+
     <section  v-else class="row controls">
         <div  class="small-12 columns">
            <v-btn color="red" id="attack" @click="attack">ATTACK</v-btn>
@@ -39,6 +54,12 @@
             <v-btn color="info" @click="giveUp"  id="give-up">GIVE UP</v-btn>
         </div>
     </section>
+
+
+
+
+
+
 
       <section class="row log">
           <div class="small-12 columns">
@@ -80,7 +101,8 @@ export default {
         turnColor: 'black',
         turnBackcolor : 'yellow',
         monsterCount: 0,
-        myCount: 0
+        myCount: 0,
+        graph: []
          }),
 
     methods:{
@@ -94,6 +116,8 @@ export default {
 
            this.monsterAttachHere = (`Monster Attack : ${hitMe}`)
             this.monsterCount +=1
+        this.graph.pop(hitMe)
+         
         },
  
         myAttack: function(monsterHealth){
