@@ -1,4 +1,5 @@
 <template>
+<v-app>
  <div id="app">
     <section class="row">
         <div class="small-6 columns">
@@ -45,6 +46,7 @@
         </div>
     </section>
 </div>
+</v-app>
 </template>
 
 <script>
