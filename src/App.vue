@@ -48,10 +48,11 @@
 
     <section  v-else class="row controls">
         <div  class="small-12 columns">
-           <v-btn color="red" id="attack" @click="attack">ATTACK</v-btn>
-             <v-btn color="warning" id="special-attack" @click="specialAttack">SPECIAL ATTACK</v-btn>
-             <v-btn color="success" id="heal" @click="healing">HEAL</v-btn>
-            <v-btn color="info" @click="giveUp"  id="give-up">GIVE UP</v-btn>
+           <v-btn color="error" id="attack"@click="attack">ATTACK<v-icon color="white darken-2">fab fa-sith</v-icon></v-btn>
+             <v-btn color="warning" id="special-attack" @click="specialAttack">SPECIAL ATTACK<v-icon>fas fa-user-ninja</v-icon></v-btn>
+             <v-btn color="success" id="heal" @click="healing">HEAL<v-icon>fas fa-heartbeat</v-icon></v-btn>
+            <v-btn color="info" @click="giveUp"  id="give-up">GIVE UP <v-icon>mdi-delete</v-icon>
+</v-btn>
         </div>
     </section>
 
@@ -63,7 +64,7 @@
 
       <section class="row log">
           <div class="small-12 columns">
-            <h2 class="monster-turn" :style="{background: turnBackcolor, color: turnColor}">{{  monsterAttachHere }}</h2>
+            <h2  class="monster-turn" :style="{background: turnBackcolor, color: turnColor}">{{  monsterAttachHere }} </h2>
             <h2 class="player-turn" :style="{background: turnBackcolor, color: turnColor}">{{ myAttackHere }}</h2>
           </div>
       </section>
