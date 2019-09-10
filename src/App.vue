@@ -26,10 +26,10 @@
     </section>
     <section  v-else class="row controls">
         <div  class="small-12 columns">
-            <button  id="attack" @click="attack">ATTACK</button>
-            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
-            <button id="heal" @click="healing">HEAL</button>
-            <button @click="giveUp"  id="give-up">GIVE UP</button>
+           <v-btn color="red" id="attack" @click="attack">ATTACK</v-btn>
+             <v-btn color="warning" id="special-attack" @click="specialAttack">SPECIAL ATTACK</v-btn>
+             <v-btn color="success" id="heal" @click="healing">HEAL</v-btn>
+            <v-btn color="info" @click="giveUp"  id="give-up">GIVE UP</v-btn>
         </div>
     </section>
     <section class="row log" v-if="attackLog.length > 0">
@@ -180,6 +180,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  margin: 0 auto;
 }
 
   .text-center {
